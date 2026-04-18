@@ -1,0 +1,1 @@
+<div style="background-color:<?= $color1 ?>"></div>

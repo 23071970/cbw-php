@@ -1,0 +1,1 @@
+<div style="background-color:<?= $farbeAsso[3] ?>"></div>
