@@ -6,7 +6,7 @@ $lang = checklang();
 include INCLUDES_PATH . '/meta/meta.php';
 include INCLUDES_PATH . '/partials/header.php'
 ?>
-<?php include INCLUDES_PATH . '/partials/navigation.php' ?>
+
 
 <main>
 

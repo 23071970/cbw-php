@@ -13,3 +13,4 @@
 </head>
 
 <body>
+    <?php include INCLUDES_PATH . '/partials/navigation.php' ?>
