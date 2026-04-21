@@ -15,11 +15,14 @@ include INCLUDES_PATH . '/partials/header.php';
 
 ?>
 
-<main>
+<main class="flex-grow-1">
 
-    <h1>Hallo micha</h1>
-    <img height="100" src="<?php echo IMG_URL ?>/1.jpg" alt="">
+    <div class="container py-4">
 
+        <h1>Hallo micha</h1>
+        <img height="100" src="<?php echo IMG_URL ?>/1.jpg" alt="">
+
+    </div>
 
 </main>
 <?php include INCLUDES_PATH . '/partials/footer.php' ?>

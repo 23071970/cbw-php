@@ -31,8 +31,10 @@ $accordionData1 = [
 ?>
 
 
-<main>
-    <?= accordion($accordionData1) ?>
+<main class="flex-grow-1">
+    <div class="container py-4">
+        <?= accordion($accordionData1) ?>
+    </div>
 </main>
 
 <?php include INCLUDES_PATH . '/partials/footer.php' ?>

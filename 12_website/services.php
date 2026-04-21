@@ -68,8 +68,13 @@ $accordionDataLang = [
 
 ?>
 
-<main>
-    <?= accordionlang($accordionDataLang, $lang) ?>
+
+
+<main class="flex-grow-1">
+
+    <div class="container py-4">
+        <?= accordionlang($accordionDataLang, $lang) ?>
+    </div>
 
 </main>
 

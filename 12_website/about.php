@@ -1,25 +1,19 @@
 <?php
 require_once __DIR__ . '/config/config.php';
-
 include INCLUDES_PATH . '/functions/helper.php';
-
-include INCLUDES_PATH . '/components/bs_components.php';
-
-
-$site = "home";
+$site = "about";
 $lang = checklang();
-
 include INCLUDES_PATH . '/meta/meta.php';
-include INCLUDES_PATH . '/partials/header.php';
-
-
+include INCLUDES_PATH . '/partials/header.php'
 ?>
 
-<main>
 
-    <h1>Hallo micha</h1>
-    <img height="100" src="<?php echo IMG_URL ?>/1.jpg" alt="">
 
+<main class="flex-grow-1">
+    <div class="container py-4">
+        <h2>About</h2>
+    </div>
 
 </main>
+
 <?php include INCLUDES_PATH . '/partials/footer.php' ?>
