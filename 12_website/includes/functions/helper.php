@@ -15,7 +15,16 @@ function checklang()
         $langOut = htmlspecialchars($lang);
     }
 
-
-
     return $langOut;
+}
+
+//für die navi zum highliten
+function isActive($page)
+{
+    return basename($_SERVER['PHP_SELF']) === $page ? 'active' : '';
+}
+
+function isActive2($site, $siteName)
+{
+    return $site === $siteName  ? 'active' : '';
 }

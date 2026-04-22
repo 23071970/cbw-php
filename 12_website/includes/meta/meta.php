@@ -28,7 +28,7 @@ $meta = [
             "description" => "Learn more about me and my projects.",
             "keywords" => "About Me, Projects, Portfolio"
         ],
-        "script" => ["script1.js", "script2.js"]
+        "script" => []
     ],
     "contact" => [
         "de" => [
