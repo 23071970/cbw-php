@@ -42,9 +42,13 @@
 
 
         Farbe:<br>
-        <input type="color" name="color">
+        <input type="color" name="color"><br>
 
+        Date:<br>
+        <input type="date" name="date" id=""><br>
 
+        time:<br>
+        <input type="time" name="time"><br>
 
 
         <br>

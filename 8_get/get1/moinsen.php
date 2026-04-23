@@ -24,7 +24,7 @@
     echo "Meine Email ist: " . htmlspecialchars($_GET['email'] ?? '');
 
     echo '<br>';
-    echo 'Die Summe der Zahlen ist: ' . (htmlspecialchars($_GET["zahl1"] ?? '') + htmlspecialchars($_GET["zahl2"] ?? ''));
+    echo 'Die Summe der Zahlen ist: ' . (htmlspecialchars((int)$_GET["zahl1"] ?? '') + htmlspecialchars((int)$_GET["zahl2"] ?? ''));
 
     echo '<br>';
 
@@ -33,7 +33,7 @@
 
     echo '<br>';
 
-    echo 'Das ergebniss von ' . htmlspecialchars($_GET["zahl1"] ?? '') . ' + ' . htmlspecialchars($_GET["zahl2"] ?? '') . '* ' . htmlspecialchars($_GET['range']) . ' : ' . ((htmlspecialchars($_GET["zahl1"] ?? '') + htmlspecialchars($_GET["zahl2"] ?? ''))) * htmlspecialchars($_GET['range'] ?? '');
+    echo 'Das ergebniss von ' . htmlspecialchars((int)$_GET["zahl1"] ?? '') . ' + ' . htmlspecialchars((int)$_GET["zahl2"] ?? '') . '* ' . htmlspecialchars($_GET['range']) . ' : ' . ((htmlspecialchars((int)$_GET["zahl1"] ?? '') + htmlspecialchars((int)$_GET["zahl2"] ?? ''))) * htmlspecialchars($_GET['range'] ?? '');
 
     echo '<br>';
     echo 'Meine Select auswahl ist: ' . htmlspecialchars(
@@ -90,6 +90,16 @@
     if (isset($_GET["select2"])) {
         echo implode(',', $_GET["select2"]);
     }
+    echo '<br>';
+
+    $date = date_create($_GET['date'] ?? '');
+
+    echo 'Du hast das datum' . date_format($date, 'd.m.Y') . ' gewählt!';
+
+    echo '<br>';
+
+    echo 'Du hast die Uhrzeit ' . $_GET['time'] . ' gewählt!';
+
 
 
 
