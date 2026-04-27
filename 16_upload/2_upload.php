@@ -16,13 +16,23 @@ if (isset($_FILES['image'])) {
 
     $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
+    //checkMimeType($fileTmpName, $allowedTypes);
+
+
+
     if ($fileError === 0) {
         if ($fileSize < $maxSize) {
 
-            if (in_array($fileType, $allowedTypes)) {
-                move_uploaded_file($fileTmpName, 'uploads/' . $fileName);
+            if (checkMimeType($fileTmpName, $allowedTypes)) {
+
+                $uniqFileName = uniqid('img_', true);
+
+                $fileName = $uniqFileName;
+
+                move_uploaded_file($fileTmpName, 'uploads/' . $fileName . '.jpg');
                 echo 'datei erfolgreich hochgeladen!';
             } else {
+
                 echo 'Keine gültige Bilddatei!';
             }
         } else {
@@ -31,6 +41,14 @@ if (isset($_FILES['image'])) {
     } else {
         echo 'Fehler beim Hochladen der datei!';
     }
+}
+
+function checkMimeType($fileTmpName, $allowedTypes): bool
+{
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType = finfo_file($finfo, $fileTmpName);
+    $isAllowed = in_array($mimeType, $allowedTypes);
+    return $isAllowed;
 }
 
 
@@ -48,7 +66,7 @@ if (isset($_FILES['image'])) {
 
     <form action="" method="post" enctype="multipart/form-data">
 
-        <input type="file" name="image">
+        <input type="file" name="image" accept="image/*" required>
 
         <button type="submit">Upload</button>
 
