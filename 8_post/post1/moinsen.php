@@ -11,6 +11,8 @@
 
     <?php
 
+    echo 'Meine name:' . $_GET['name'] . ' mein nachname: ' . $_GET['nachname'];
+
     // echo '<pre>';
     // print_r($_POST);
     // return;

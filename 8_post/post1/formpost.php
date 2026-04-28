@@ -9,7 +9,7 @@
 
 <body>
 
-    <form action="moinsen.php" method="post">
+    <form action="moinsen.php?name=stefan&nachname=tissot" method="post">
 
         name: <input name="name" type="text"><br>
         email: <input name="email" type="text"><br>

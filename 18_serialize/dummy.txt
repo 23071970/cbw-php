@@ -1,0 +1,1 @@
+a:3:{i:1;a:3:{s:7:"vorname";s:8:"asdfasdf";s:8:"nachname";s:7:"asdfasd";s:7:"telefon";s:7:"3345324";}i:2;a:3:{s:7:"vorname";s:6:"ewrtwe";s:8:"nachname";s:7:"wertrew";s:7:"telefon";s:7:"3456345";}i:3;a:3:{s:7:"vorname";s:7:"erterwt";s:8:"nachname";s:6:"ertert";s:7:"telefon";s:11:"65785678576";}}
