@@ -4,6 +4,12 @@
 
 $datei = 'dummy.txt';
 
+$bearbeitenId = '';
+$vorname = '';
+$nachname = '';
+$telefon = '';
+
+
 //holt die daten beim laden der seite
 if (file_exists($datei)) {
     $content = file_get_contents($datei);
@@ -25,6 +31,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         file_put_contents($datei, serialize($daten));
     }
 }
+
+//bearbeiten Butten klick
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'Bearbeiten' && isset($_POST['id'])) {
+    $id = $_POST['id'];
+    //ist der datensatz vorhanden
+    if (isset($daten[$id])) {
+        $bearbeitenId = $id;
+        $vorname = $daten[$id]['vorname'];
+        $nachname = $daten[$id]['nachname'];
+        $telefon = $daten[$id]['telefon'];
+    }
+}
+
+//update
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'Update' && isset($_POST['id'])) {
+    $id = $_POST['id'];
+    if (isset($daten[$id])) {
+        $daten[$id] = [
+            'vorname' => $_POST['vorname'],
+            'nachname' => $_POST['nachname'],
+            'telefon' => $_POST['telefon']
+        ];
+        file_put_contents($datei, serialize($daten));
+    }
+}
+
 
 
 //echo '<pre>';
@@ -61,12 +94,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
 
     <form method="post">
-        <input name="vorname" placeholder="vorname" type="text"><br>
-        <input name="nachname" placeholder="nachname" type="text"><br>
-        <input name="telefon" placeholder="telefon" type="text"><br>
-        <input type="submit" value="submit">
+        <input name="vorname" placeholder="vorname" value="<?= htmlspecialchars($vorname) ?>" type="text"><br>
+        <input name="nachname" placeholder="nachname" value="<?= htmlspecialchars($nachname) ?>" type="text"><br>
+        <input name="telefon" placeholder="telefon" value="<?= htmlspecialchars($telefon) ?>" type="text"><br>
 
-        <input type="hidden" name="action" value="Insert">
+        <?php if ($bearbeitenId !== '') { ?>
+            <input type="submit" name="action" value="Update">
+        <?php } else { ?>
+            <input type="submit" name="action" value="Insert">
+        <?php } ?>
+
+        <input type="hidden" name="id" value="<?= htmlspecialchars($bearbeitenId) ?>">
 
     </form>
 
