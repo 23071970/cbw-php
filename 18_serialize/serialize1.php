@@ -4,9 +4,7 @@
 
 $datei = 'dummy.txt';
 
-
-
-
+//holt die daten beim laden der seite
 if (file_exists($datei)) {
     $content = file_get_contents($datei);
     $daten = unserialize($content);
@@ -17,14 +15,23 @@ if (file_exists($datei)) {
     $daten = [];
 }
 
+//löschen
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'Löschen' && isset($_POST['id'])) {
+
+    $id = $_POST['id'];
+    if (isset($daten[$id])) {
+        unset($daten[$id]);
+        file_put_contents($datei, serialize($daten));
+    }
+}
 
 
 //echo '<pre>';
 //print_r($daten);
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//insert
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'Insert') {
     $id = empty($daten) ? 1 : max(array_keys($daten)) + 1;
     $daten[$id] = [
         'vorname' => $_POST['vorname'],
@@ -52,26 +59,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-    <?php
-    if (!empty($daten)) {
-        foreach ($daten as $key => $data) {
-            echo 'Id: ' . htmlspecialchars($key) . '<br>';
-            echo 'Vorname: ' . htmlspecialchars($data['vorname']) . '<br>';
-            echo 'Nachname: ' . htmlspecialchars($data['nachname']) . '<br>';
-            echo 'Telefon: ' . htmlspecialchars($data['telefon']) . '<br>';
-        }
-    }
-
-    ?>
-
 
     <form method="post">
-
         <input name="vorname" placeholder="vorname" type="text"><br>
         <input name="nachname" placeholder="nachname" type="text"><br>
         <input name="telefon" placeholder="telefon" type="text"><br>
         <input type="submit" value="submit">
+
+        <input type="hidden" name="action" value="Insert">
+
     </form>
+
+    <br>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>Telefon</th>
+            <th>Action</th>
+        </tr>
+
+        <?php foreach ($daten as $key => $data) { ?>
+            <tr>
+                <td><?php echo htmlspecialchars($key); ?></td>
+                <td><?php echo htmlspecialchars($data['vorname']); ?></td>
+                <td><?php echo htmlspecialchars($data['nachname']); ?></td>
+                <td><?php echo htmlspecialchars($data['telefon']); ?></td>
+                <td>
+                    <form method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="<?= htmlspecialchars($key)  ?>">
+                        <input type="submit" name="action" value="Bearbeiten">
+                    </form>
+
+                    <form method="post" style="display: inline;">
+                        <input type="hidden" name="id" value="<?= htmlspecialchars($key)  ?>">
+                        <input type="submit" name="action" value="Löschen">
+                    </form>
+
+                </td>
+            </tr>
+        <?php } ?>
+    </table>
+
+
 
 </body>
 
