@@ -2,7 +2,7 @@
 //echo '<pre>';
 //print_r($_POST);
 
-$datei = 'dummy.txt';
+$datei = 'data/dummy.txt';
 
 $bearbeitenId = '';
 $vorname = '';
