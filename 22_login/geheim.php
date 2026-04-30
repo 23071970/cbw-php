@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '/config/config.php';
+require_once __DIR__ . '/include/functions/auth.php';
+requireLogin();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +16,8 @@
 <body>
     <h1>Geheim</h1>
     <?php include __DIR__ . '/include/partials/navi.php' ?>
+
+    <p>alles geheim!!</p>
 
 </body>
 
