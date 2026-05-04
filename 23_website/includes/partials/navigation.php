@@ -8,16 +8,34 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="index.php?site=home">Home</a>
+                        <a class="nav-link " href="index.php?site=home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.php?site=about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?site=services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?site=contact">Contact</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?site=about">About</a>
+                        <a class="nav-link" href="index.php?site=geheim">Geheim</a>
                     </li>
 
-                    <li class=" nav-item">
-                        <a class="nav-link" href="index.php?site=contact">Contact</a>
-                    </li>
+                    <?php if (isLoggedIn()): ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?site=logout">Logout</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?site=register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?site=login">Login</a>
+                        </li>
+                    <?php endif; ?>
 
                 </ul>
 
