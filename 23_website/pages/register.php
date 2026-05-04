@@ -45,7 +45,7 @@ if ($_POST) {
             <div class="row">
                 <div class="col-md-6">
                     <label for="pass" class="form-label">Password</label>
-                    <input class="form-control" type="password" id="pass" value="peitsche" name="pass" placeholder="Password" required>
+                    <input class="form-control" type="password" id="pass" name="pass" placeholder="Password" required>
                 </div>
             </div>
             <div class="col-12 mt-3">
