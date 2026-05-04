@@ -29,4 +29,7 @@ switch ($_GET['site'] ?? 'home') {
         ];
         require_once PAGES_PATH . "/contact.php";
         break;
+    default:
+        require_once PAGES_PATH . "/404.php";
+        break;
 }
